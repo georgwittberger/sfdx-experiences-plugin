@@ -1,4 +1,4 @@
-import { readdirSync } from 'fs';
+import { existsSync, readdirSync } from 'fs';
 import { readJsonSync } from 'fs-extra';
 import { resolve } from 'path';
 import getConfigPath from './get-config-path';
@@ -6,6 +6,10 @@ import SiteConfig from './site-config';
 
 export default function getSiteConfig(bundlePath: string): SiteConfig {
   const configPath = getConfigPath(bundlePath);
+  if (!existsSync(configPath)) {
+    throw new Error(`Config directory does not exist: ${configPath}`);
+  }
+
   const configFiles = readdirSync(configPath).filter(file => file.toLowerCase().endsWith('.json'));
   for (const configFile of configFiles) {
     const configContent = readJsonSync(resolve(configPath, configFile));
@@ -13,5 +17,6 @@ export default function getSiteConfig(bundlePath: string): SiteConfig {
       return configContent;
     }
   }
-  throw new Error(`Site config file not found in bundle path ${bundlePath}`);
+
+  throw new Error(`Site config file not found in bundle directory: ${bundlePath}`);
 }

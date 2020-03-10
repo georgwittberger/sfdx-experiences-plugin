@@ -1,6 +1,11 @@
-import { readdirSync } from 'fs';
+import { existsSync, readdirSync } from 'fs';
 import getRoutesPath from './get-routes-path';
 
 export default function getRoutesFileNames(bundlePath: string): string[] {
-  return readdirSync(getRoutesPath(bundlePath)).filter(file => file.toLowerCase().endsWith('.json'));
+  const routesPath = getRoutesPath(bundlePath);
+  if (!existsSync(routesPath)) {
+    throw new Error(`Routes directory does not exist: ${routesPath}`);
+  }
+
+  return readdirSync(routesPath).filter(file => file.toLowerCase().endsWith('.json'));
 }

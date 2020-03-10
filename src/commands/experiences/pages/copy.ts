@@ -1,6 +1,5 @@
 import { flags, SfdxCommand } from '@salesforce/command';
 import { Messages, SfdxError } from '@salesforce/core';
-import { AnyJson } from '@salesforce/ts-types';
 import { existsSync } from 'fs';
 import getAppPageIdMap from '../../../modules/experiences/config/get-app-page-id-map';
 import copyRouteFile from '../../../modules/experiences/pages/copy/copy-route-file';
@@ -41,7 +40,7 @@ export default class Org extends SfdxCommand {
   protected static supportsDevhubUsername = false;
   protected static requiresProject = false;
 
-  public async run(): Promise<AnyJson> {
+  public async run(): Promise<CopyResult> {
     const overwrite: boolean = this.flags.overwrite || false;
     const sourceBundlePath = getAbsolutePath(this.args.source);
     const targetBundlePath = getAbsolutePath(this.args.target);
@@ -53,6 +52,7 @@ export default class Org extends SfdxCommand {
       throw new SfdxError(messages.getMessage('errorMissingTargetPath', [targetBundlePath]));
     }
 
+    const copyResult: CopyResult = { copiedPages: [] };
     try {
       const appPageIdMap = getAppPageIdMap(sourceBundlePath, targetBundlePath);
       const routeFileNamesToCopy = getRoutesToCopy(sourceBundlePath, targetBundlePath, overwrite);
@@ -75,10 +75,25 @@ export default class Org extends SfdxCommand {
         this.log(messages.getMessage('infoCopyingRoute', [fileName, sourceRouteFile, targetRouteFile]));
 
         copyRouteFile(sourceRouteFile, targetRouteFile, appPageIdMap);
+
+        copyResult.copiedPages.push({ fileName, sourceRouteFile, targetRouteFile, sourceViewFile, targetViewFile });
       }
-      return {};
+
+      return copyResult;
     } catch (error) {
       throw new SfdxError(messages.getMessage('errorFailedWithError', [error]));
     }
   }
+}
+
+interface CopyResult {
+  copiedPages: CopyPageResult[];
+}
+
+interface CopyPageResult {
+  fileName: string;
+  sourceRouteFile: string;
+  targetRouteFile: string;
+  sourceViewFile: string;
+  targetViewFile: string;
 }
