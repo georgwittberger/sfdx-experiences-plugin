@@ -1,0 +1,12 @@
+{
+  "commandDescription": "Copy pages from one ExperienceBundle to another",
+  "sourceArgDescription": "Source ExperienceBundle to copy pages from",
+  "targetArgDescription": "Target ExperienceBundle to copy pages to",
+  "overwriteFlagDescription": "Overwrite existing pages in the target",
+  "infoNoRoutesToCopy": "No routes to copy",
+  "infoCopyingView": "Copying view file '%s' from '%s' to '%s'",
+  "infoCopyingRoute": "Copying route file '%s' from '%s' to '%s'",
+  "errorMissingSourcePath": "Source path does not exist: %s",
+  "errorMissingTargetPath": "Target path does not exist: %s",
+  "errorFailedWithError": "Plugin failed with error. %s"
+}

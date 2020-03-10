@@ -1,0 +1,71 @@
+{
+  "name": "sfdx-experiences-plugin",
+  "description": "SFDX plugin to manage ExperienceBundle metadata",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Georg Wittberger <georg.wittberger@gmail.com>",
+  "homepage": "https://github.com/georgwittberger/sfdx-experiences-plugin",
+  "keywords": [
+    "sfdx-plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/georgwittberger/sfdx-experiences-plugin.git"
+  },
+  "bugs": "https://github.com/georgwittberger/sfdx-experiences-plugin/issues",
+  "scripts": {
+    "postpack": "rimraf oclif.manifest.json",
+    "prepack": "rimraf lib && tsc -b && oclif-dev manifest",
+    "update-readme": "oclif-dev readme"
+  },
+  "dependencies": {
+    "@oclif/command": "^1",
+    "@oclif/config": "^1",
+    "@oclif/errors": "^1",
+    "@salesforce/command": "^2",
+    "@salesforce/core": "^2",
+    "fs-extra": "^8.1.0",
+    "tslib": "^1"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1",
+    "@oclif/plugin-help": "^2",
+    "@oclif/test": "^1",
+    "@salesforce/dev-config": "1.4.1",
+    "@types/chai": "^4",
+    "@types/fs-extra": "^8.1.0",
+    "@types/mocha": "^5",
+    "@types/node": "^10",
+    "chai": "^4",
+    "globby": "^8",
+    "mocha": "^5",
+    "nyc": "^14",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8",
+    "tslint": "^5"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/lib",
+    "/messages",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "sfdx",
+    "topics": {
+      "experiences": {
+        "description": "Commands to manage ExperienceBundle metadata"
+      },
+      "experiences:pages": {
+        "description": "Commands to manage pages in ExperienceBundles"
+      }
+    },
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ]
+  }
+}
