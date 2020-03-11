@@ -3,9 +3,10 @@
   "sourceArgDescription": "Source ExperienceBundle to copy pages from",
   "targetArgDescription": "Target ExperienceBundle to copy pages to",
   "overwriteFlagDescription": "Overwrite existing pages in the target",
+  "filesFlagDescription": "Copy only given page files (delimited by comma)",
   "infoNoRoutesToCopy": "No routes to copy",
-  "infoCopyingView": "Copying view file '%s' from '%s' to '%s'",
-  "infoCopyingRoute": "Copying route file '%s' from '%s' to '%s'",
+  "infoCopyingView": "Copying view file:   %s\n  from: %s\n  to:   %s",
+  "infoCopyingRoute": "Copying route file:  %s\n  from: %s\n  to:   %s",
   "errorMissingSourcePath": "Source path does not exist: %s",
   "errorMissingTargetPath": "Target path does not exist: %s",
   "errorFailedWithError": "Plugin failed with error. %s"

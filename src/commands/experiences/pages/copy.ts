@@ -21,6 +21,9 @@ export default class ExperiencesPagesCopy extends SfdxCommand {
     `,
     `$ sfdx experiences:pages:copy -o ./source-app/main/default/experiences/Example1 ./target-app/main/default/experiences/Example2
       Copies all pages from Example1 in source-app to Example2 in target-app overwriting existing pages.
+    `,
+    `$ sfdx experiences:pages:copy -o -f home.json ./source-app/main/default/experiences/Example1 ./target-app/main/default/experiences/Example2
+      Copies the home page from Example1 in source-app to Example2 in target-app overwriting the existing one.
     `
   ];
 
@@ -32,7 +35,12 @@ export default class ExperiencesPagesCopy extends SfdxCommand {
   protected static flagsConfig = {
     overwrite: flags.boolean({
       char: 'o',
-      description: messages.getMessage('overwriteFlagDescription')
+      description: messages.getMessage('overwriteFlagDescription'),
+      default: false
+    }),
+    files: flags.array({
+      char: 'f',
+      description: messages.getMessage('filesFlagDescription')
     })
   };
 
@@ -41,7 +49,8 @@ export default class ExperiencesPagesCopy extends SfdxCommand {
   protected static requiresProject = false;
 
   public async run(): Promise<CopyResult> {
-    const overwrite: boolean = this.flags.overwrite || false;
+    const overwrite: boolean = this.flags.overwrite;
+    const files: string[] = this.flags.files;
     const sourceBundlePath = getAbsolutePath(this.args.source);
     const targetBundlePath = getAbsolutePath(this.args.target);
 
@@ -55,7 +64,7 @@ export default class ExperiencesPagesCopy extends SfdxCommand {
     const copyResult: CopyResult = { copiedPages: [] };
     try {
       const appPageIdMap = getAppPageIdMap(sourceBundlePath, targetBundlePath);
-      const routeFileNamesToCopy = getRoutesToCopy(sourceBundlePath, targetBundlePath, overwrite);
+      const routeFileNamesToCopy = getRoutesToCopy(sourceBundlePath, targetBundlePath, overwrite, files);
 
       if (routeFileNamesToCopy.length < 1) {
         this.log(messages.getMessage('infoNoRoutesToCopy'));

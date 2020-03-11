@@ -25,15 +25,15 @@ USAGE
 ```
 <!-- usagestop -->
 <!-- commands -->
-* [`sfdx experiences:pages:copy [-o] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-experiencespagescopy--o---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+* [`sfdx experiences:pages:copy [-o] [-f <array>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-experiencespagescopy--o--f-array---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 
-## `sfdx experiences:pages:copy [-o] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+## `sfdx experiences:pages:copy [-o] [-f <array>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
 Copy pages from one ExperienceBundle to another
 
 ```
 USAGE
-  $ sfdx experiences:pages:copy [-o] [--json] [--loglevel 
+  $ sfdx experiences:pages:copy [-o] [-f <array>] [--json] [--loglevel 
   trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 ARGUMENTS
@@ -41,6 +41,9 @@ ARGUMENTS
   TARGET  Target ExperienceBundle to copy pages to
 
 OPTIONS
+  -f, --files=files                                                                 Copy only given page files
+                                                                                    (delimited by comma)
+
   -o, --overwrite                                                                   Overwrite existing pages in the
                                                                                     target
 
@@ -57,5 +60,9 @@ EXAMPLES
   $ sfdx experiences:pages:copy -o ./source-app/main/default/experiences/Example1 
   ./target-app/main/default/experiences/Example2
          Copies all pages from Example1 in source-app to Example2 in target-app overwriting existing pages.
+    
+  $ sfdx experiences:pages:copy -o -f home.json ./source-app/main/default/experiences/Example1 
+  ./target-app/main/default/experiences/Example2
+         Copies the home page from Example1 in source-app to Example2 in target-app overwriting the existing one.
 ```
 <!-- commandsstop -->
