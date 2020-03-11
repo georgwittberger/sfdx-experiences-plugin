@@ -25,7 +25,36 @@ USAGE
 ```
 <!-- usagestop -->
 <!-- commands -->
+* [`sfdx experiences:config:copy -c <array> [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-experiencesconfigcopy--c-array---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx experiences:pages:copy [-o] [-f <array>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-experiencespagescopy--o--f-array---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+
+## `sfdx experiences:config:copy -c <array> [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+
+Copy configuration from one ExperienceBundle to another
+
+```
+USAGE
+  $ sfdx experiences:config:copy -c <array> [--json] [--loglevel 
+  trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+ARGUMENTS
+  SOURCE  Source ExperienceBundle to copy configuration from
+  TARGET  Target ExperienceBundle to copy configuration to
+
+OPTIONS
+  -c, --config=config                                                               (required) Copy given configuration
+                                                                                    values (delimited by comma)
+
+  --json                                                                            format output as json
+
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
+                                                                                    this command invocation
+
+EXAMPLE
+  $ sfdx experiences:config:copy -c preferredDomain,headMarkup ./source-app/main/default/experiences/Example1 
+  ./target-app/main/default/experiences/Example2
+         Copies preferred domain and head markup from Example1 in source-app to Example2 in target-app.
+```
 
 ## `sfdx experiences:pages:copy [-o] [-f <array>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
