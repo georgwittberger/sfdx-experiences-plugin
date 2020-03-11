@@ -14,11 +14,14 @@ The primary goal is to facilitate the exchange of configuration and content betw
 - You want to transfer some content from one community to another community while preserving any existing content which is already there.
 - You want to update just some partial configuration or content in a community.
 
+----
+
 <!-- toc -->
 * [SFDX Experiences Plugin](#sfdx-experiences-plugin)
 * [Installation](#installation)
 * [Usage](#usage)
 * [Commands](#commands)
+* [License](#license)
 <!-- tocstop -->
 
 # Installation
@@ -146,3 +149,7 @@ EXAMPLES
          Copies the home page from Example1 in source-app to Example2 in target-app overwriting the existing one.
 ```
 <!-- commandsstop -->
+
+# License
+
+[MIT](https://opensource.org/licenses/MIT)
