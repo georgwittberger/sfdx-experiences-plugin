@@ -18,9 +18,10 @@ export default function getSiteConfig(bundlePath: string): SiteConfig {
 
   const configFiles = readdirSync(configPath).filter(file => file.toLowerCase().endsWith('.json'));
   for (const configFile of configFiles) {
-    const configContent = readJsonSync(resolve(configPath, configFile));
-    if (configContent.type === 'site') {
-      return configContent;
+    const filePath = resolve(configPath, configFile);
+    const fileContent = readJsonSync(filePath);
+    if (fileContent.type === 'site') {
+      return { filePath, content: fileContent };
     }
   }
 

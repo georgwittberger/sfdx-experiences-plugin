@@ -88,6 +88,7 @@ export default class ExperiencesPagesCopy extends SfdxCommand {
         copyResult.copiedPages.push({ fileName, sourceRouteFile, targetRouteFile, sourceViewFile, targetViewFile });
       }
 
+      this.log(messages.getMessage('infoCopyFinished'));
       return copyResult;
     } catch (error) {
       throw new SfdxError(messages.getMessage('errorFailedWithError', [error]));

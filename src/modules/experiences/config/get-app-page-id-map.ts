@@ -13,7 +13,7 @@ export default function getAppPageIdMap(sourceBundlePath: string, targetBundlePa
   const targetSiteConfig = getSiteConfig(targetBundlePath);
 
   const appPageIdMap = new Map<string, string>();
-  appPageIdMap.set(sourceSiteConfig.mainAppPageId, targetSiteConfig.mainAppPageId);
-  appPageIdMap.set(sourceSiteConfig.loginAppPageId, targetSiteConfig.loginAppPageId);
+  appPageIdMap.set(sourceSiteConfig.content.mainAppPageId, targetSiteConfig.content.mainAppPageId);
+  appPageIdMap.set(sourceSiteConfig.content.loginAppPageId, targetSiteConfig.content.loginAppPageId);
   return appPageIdMap;
 }

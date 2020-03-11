@@ -1,0 +1,11 @@
+{
+  "commandDescription": "Copy configuration from one ExperienceBundle to another",
+  "sourceArgDescription": "Source ExperienceBundle to copy configuration from",
+  "targetArgDescription": "Target ExperienceBundle to copy configuration to",
+  "configFlagDescription": "Copy given configuration values (delimited by comma)",
+  "infoNoConfigToCopy": "No configuration to copy",
+  "infoCopyFinished": "Finished copying configuration",
+  "errorMissingSourcePath": "Source path does not exist: %s",
+  "errorMissingTargetPath": "Target path does not exist: %s",
+  "errorFailedWithError": "Plugin failed with error. %s"
+}

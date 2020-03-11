@@ -6,7 +6,12 @@
   "author": "Georg Wittberger <georg.wittberger@gmail.com>",
   "homepage": "https://github.com/georgwittberger/sfdx-experiences-plugin",
   "keywords": [
-    "sfdx-plugin"
+    "sfdx-plugin",
+    "salesforce",
+    "communities",
+    "metadata",
+    "experiencebundle",
+    "experience"
   ],
   "repository": {
     "type": "git",
@@ -59,6 +64,9 @@
     "topics": {
       "experiences": {
         "description": "Commands to manage ExperienceBundle metadata"
+      },
+      "experiences:config": {
+        "description": "Commands to manage configuration in ExperienceBundles"
       },
       "experiences:pages": {
         "description": "Commands to manage pages in ExperienceBundles"

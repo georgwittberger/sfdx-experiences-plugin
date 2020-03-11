@@ -7,6 +7,7 @@
   "infoNoRoutesToCopy": "No routes to copy",
   "infoCopyingView": "Copying view file:   %s\n  from: %s\n  to:   %s",
   "infoCopyingRoute": "Copying route file:  %s\n  from: %s\n  to:   %s",
+  "infoCopyFinished": "Finished copying pages",
   "errorMissingSourcePath": "Source path does not exist: %s",
   "errorMissingTargetPath": "Target path does not exist: %s",
   "errorFailedWithError": "Plugin failed with error. %s"
