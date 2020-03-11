@@ -1,6 +1,13 @@
 import { existsSync } from 'fs';
 import { readJsonSync, writeJsonSync } from 'fs-extra';
 
+/**
+ * Copies the given source route file to the given target route file. Transforms app page IDs if given.
+ *
+ * @param {string} sourceFile Path to the source route file.
+ * @param {string} targetFile Path to the target route file.
+ * @param {Map<string, string>} [appPageIdMap] Optional mapping of app page IDs.
+ */
 export default function copyRouteFile(
   sourceFile: string,
   targetFile: string,

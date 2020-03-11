@@ -4,6 +4,12 @@ import { resolve } from 'path';
 import getConfigPath from './get-config-path';
 import SiteConfig from './site-config';
 
+/**
+ * Returns the site configuration from the given bundle path.
+ *
+ * @param {string} bundlePath Path to the bundle.
+ * @returns {SiteConfig} Site configuration from the bundle.
+ */
 export default function getSiteConfig(bundlePath: string): SiteConfig {
   const configPath = getConfigPath(bundlePath);
   if (!existsSync(configPath)) {

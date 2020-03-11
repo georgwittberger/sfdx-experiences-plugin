@@ -1,18 +1,18 @@
 import { flags, SfdxCommand } from '@salesforce/command';
 import { Messages, SfdxError } from '@salesforce/core';
 import { existsSync } from 'fs';
-import getAppPageIdMap from '../../../modules/experiences/config/get-app-page-id-map';
-import copyRouteFile from '../../../modules/experiences/pages/copy/copy-route-file';
-import copyViewFile from '../../../modules/experiences/pages/copy/copy-view-file';
-import getRoutesToCopy from '../../../modules/experiences/pages/copy/get-routes-to-copy';
-import getRouteFilePath from '../../../modules/experiences/pages/get-route-file-path';
-import getViewFilePath from '../../../modules/experiences/pages/get-view-file-path';
-import getAbsolutePath from '../../../modules/experiences/utils/get-absolute-path';
+import { getAppPageIdMap } from '../../../modules/experiences/config/core';
+import { copyRouteFile, copyViewFile, getRoutesToCopy } from '../../../modules/experiences/pages/copy';
+import { getRouteFilePath, getViewFilePath } from '../../../modules/experiences/pages/core';
+import { getAbsolutePath } from '../../../modules/experiences/utils/core';
 
 Messages.importMessagesDirectory(__dirname);
 const messages = Messages.loadMessages('sfdx-experiences-plugin', 'experiences-pages-copy');
 
-export default class Org extends SfdxCommand {
+/**
+ * Command which copies routes and views from one ExperienceBundle to another.
+ */
+export default class ExperiencesPagesCopy extends SfdxCommand {
   public static description = messages.getMessage('commandDescription');
 
   public static examples = [
