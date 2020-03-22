@@ -1,7 +1,7 @@
 {
   "name": "sfdx-experiences-plugin",
   "description": "SFDX plugin to manage ExperienceBundle metadata",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "author": "Georg Wittberger <georg.wittberger@gmail.com>",
   "homepage": "https://github.com/georgwittberger/sfdx-experiences-plugin",
